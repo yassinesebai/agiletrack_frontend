@@ -1,0 +1,29 @@
+<nb-card class="normal-card" size="medium">
+    <div class="details p-4">
+        <div class="h1">
+            <nb-icon icon="attach-outline" pack="eva"></nb-icon>
+            {{project.name}}
+        </div>
+        <div class="description">
+            {{project.description}}
+        </div>
+    </div>
+    <div class="summary-container">
+        <div>
+            <div class="mb-2 text-hint">START DATE</div>
+            <div>{{ project.start_date | date }}</div>
+        </div>
+        <div>
+            <div class="mb-2 text-hint">DUE DATE</div>
+            <div>{{ project.estimated_end_date | date }}</div>
+        </div>
+        <div>
+            <div class="mb-2 text-hint">REMAINING</div>
+            <div>{{ project.remaining_days }} days</div>
+        </div>
+        <div>
+            <div class="mb-2 text-hint">STATUS</div>
+            <div>{{ status }}</div>
+        </div>
+    </div>
+</nb-card>

@@ -1,0 +1,45 @@
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Project name</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Started</th>
+            <th scope="col">Set     to end</th>
+            <th scope="col">Ended</th>
+            <th scope="col">Team</th>
+            <th class="text-center" scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of projects">
+            <th scope="row" class="text-hint">P{{p.id}}</th>
+            <td>
+                <a href="/projects/{{p.id}}/overview">{{p.name}}</a>
+            </td>
+            <td class="d">
+                <div class="row align-items-center">
+                    <div class="col-8 pr-0">
+                        <nb-progress-bar size="tiny" [value]="p.progress" status="success"></nb-progress-bar>
+                    </div>
+                    <div class="col-4 text-center px-1">
+                        {{p.progress}}%
+                    </div>
+                </div>
+            </td>
+            <td>{{p.start_date | date}}</td>
+            <td>{{p.estimated_end_date | date}}</td>
+            <td *ngIf="p.is_completed" [ngClass]="p.end_date <= p.estimated_end_date ? 'text-success' : 'text-danger'" class="end">{{p.end_date}}</td>
+            <td *ngIf="!p.is_completed" class="end">-</td>
+            <td class="team">
+                <div class="d-flex flex-wrap justify-content-start">
+                    <nb-user *ngFor="let e of p.employees" size="small" [name]="e.username" title="Engineer" onlyPicture
+                    [picture]="'http://127.0.0.1:8000/' + e.image"></nb-user>
+                </div>
+            </td>
+            <td class="action" (click)="user.isLead ? openEditWindowForm(p) : ''">
+                <nb-icon icon="edit-2-outline"></nb-icon>
+            </td>
+        </tr>
+    </tbody>
+</table>

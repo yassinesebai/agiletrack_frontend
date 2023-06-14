@@ -1,0 +1,49 @@
+<div class="row py-5">
+    <div class="col-md-5 text-center">
+        <img *ngIf="user" class="profileImg" src="http://127.0.0.1:8000/{{user.image}}" alt="">
+        <input (change)="onChange($event)" type="file" accept="image/*" class="mt-5 my-3" name="" id="">
+    </div>
+    <div class="col-md-7">
+        <form [formGroup]="myForm" (ngSubmit)="update_profile()">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="first_name" class="label">First name</label>
+                    <input class="mb-2" type="text" formControlName="first_name" nbInput fullWidth id="first_name">
+                    <span *ngIf="first_name && first_name.invalid && (isSubmitted || first_name.touched)" class="text-danger">This field is
+                        required !</span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name" class="label">Last name</label>
+                    <input class="mb-2" type="text" formControlName="last_name" nbInput fullWidth id="last_name">
+                    <span *ngIf="last_name && last_name.invalid && (isSubmitted || last_name.touched)" class="text-danger">This field is
+                        required !</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="job" class="label">Job</label>
+                <nb-select formControlName="job" fullWidth id="job">
+                    <nb-option *ngFor="let job of jobs" value="{{job.id}}">{{job.title}}</nb-option>
+                </nb-select>
+                <span *ngIf="job && job.invalid && (isSubmitted || job.touched)" class="text-danger">This field is
+                    required !</span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="label">Password</label>
+                <input class="mb-2" type="password" formControlName="password" nbInput fullWidth id="password">
+                <span *ngIf="password && password.invalid && password.touched" class="text-danger">This field is
+                    required !</span>
+            </div>
+            <div class="form-group">
+                <label for="password2" class="label">Confirm password</label>
+                <input class="mb-2" type="password" formControlName="password2" nbInput fullWidth id="password2">
+                <span *ngIf="password2 && password2.invalid && password2.touched" class="text-danger">
+                    This field is required !
+                </span>
+                <span *ngIf="myForm.hasError('passwordMismatch')" class="text-danger">
+                    Passwords must match !
+                </span>
+            </div>
+            <button type="submit" status="info" class="mt-2" fullWidth size="small" nbButton>Save changes</button>
+        </form>
+    </div>
+</div>

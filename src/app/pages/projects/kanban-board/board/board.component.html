@@ -1,0 +1,50 @@
+<div class="board">
+    <div class="d-flex align-items-center">
+        <nb-card id="search-card">
+          <nb-form-field>
+            <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+            <input placeholder="Search" type="text" [(ngModel)]="searchText" id="search" nbInput>
+          </nb-form-field>
+        </nb-card>
+        <nb-card class="px-3 filter-btn py-2 ml-4">
+          <nb-checkbox (checkedChange)="add($event)" status="info">
+            Only my tasks
+          </nb-checkbox>
+        </nb-card>
+    </div>
+    <div class="board-wrapper">
+        <div class="board-columns">
+            <div cdkDropList cdkDropListOrientation="horizontal" class="board-columns"
+                (cdkDropListDropped)="dropGrid($event)">
+                <div cdkDragLockAxis="x" class="board-column" *ngFor="let column of board.columns" cdkDrag>
+                    <div class="pl-1 column-title" cdkDragHandle>
+                        {{ column.name }} <span class="ml-3" id="{{ column.name }}">{{ column.tasks.length }}</span>
+                    </div>
+                    <div class="tasks-container" id="{{column.id}}" [cdkDropListConnectedTo]="['1', '2', '3']"
+                        cdkDropList [cdkDropListData]="column.tasks" (cdkDropListDropped)="drop($event)">
+                        <nb-card class="task" (click)="openEditForm(item)" *ngFor="let item of column.tasks | search: searchText" cdkDrag [cdkDragData]="item">
+                            <nb-card-body>
+                                <p class="task-sum">{{ item.summary }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <nb-user *ngIf="item.employee" size="medium" [name]="item.employee.username" title="Engineer"
+                                            onlyPicture [picture]="'http://127.0.0.1:8000/' + item.employee.image">
+                                        </nb-user>
+                                        <div class="text-hint" *ngIf="!item.employee">NOT ASSIGNED -</div>
+                                        <div class="text-hint ml-2">TASK-{{item.id}}</div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <img src="assets/images/story.svg" alt="">
+                                        <img src="assets/images/{{item.priority}}.svg" class="mx-2" width="18px" alt="">
+                                        <div class="text-hint">{{item.duration}} hours</div>
+                                    </div>
+                                </div>
+                            </nb-card-body>
+                        </nb-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-hint text-center mt-5" *ngIf="current_sprint === null">No active sprint yet !</h3>
+</div>

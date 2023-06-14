@@ -1,0 +1,23 @@
+<div *ngIf="projects && user">
+    <h1>{{ projects.length > 0 ? 'Choose a project to work on' : 'No projects to work on yet!' }}</h1>
+    <div class="row projects">
+        <ng-container *ngIf="projects.length > 0">
+            <div class="col-md-4" *ngFor="let p of projects">
+                <ngx-project-card [project]="p" color="info"></ngx-project-card>
+            </div>
+        </ng-container>
+
+        <div class="col-md-4" *ngIf="user.groups.indexOf('lead') !== -1">
+            <nb-card class="d-flex justify-items-center align-items-center add-project">
+                <nb-card-body class="text-center">
+                    <a href="/projects">
+                        <nb-icon class="plus text-hint mb-3" icon="plus-square-outline"></nb-icon>
+                        <h3 class="text-hint">
+                            Add a new project
+                        </h3>
+                    </a>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+</div>

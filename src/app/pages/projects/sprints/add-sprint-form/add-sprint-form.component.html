@@ -1,0 +1,35 @@
+<form [formGroup]="myForm" *ngIf="!finish">
+    <div class="form-group">
+      <label for="exampleInputName" class="label">Sprint Name</label>
+      <input type="text" formControlName="name" nbInput fullWidth id="exampleInputName">
+    </div>
+    <div *ngIf="mode === 'edit' && showdate" class="form-group">
+        <label for="exampleInputestimated_end_date" class="label">End Date</label>
+        <input fullWidth id="exampleInputestimated_end_date" formControlName="estimated_end_date" nbInput placeholder="e.g. June 02, 2023" [nbDatepicker]="formpickerend">
+        <nb-datepicker #formpickerend></nb-datepicker>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputGoal" class="label">Goal</label>
+        <textarea rows="4" id="exampleInputGoal" formControlName="goal" nbInput fullWidth></textarea>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            <button type="submit" class="px-4 mr-2" size="small" nbButton status="info" (click)="mode === 'add' ? addSprint() : (start ? startSprint() : updateSprint('update'))">
+                {{ mode == 'add' ? 'Create' : (start ? 'Start' : "Edit") }}
+            </button>
+            <button type="reset" class="px-4 ml-2" size="small" nbButton>Cancel</button>
+        </div>
+        <button *ngIf="mode=='edit' && !start" type="submit" class="px-4" size="small" status="danger" nbButton (click)="deleteSprint()">Delete</button>
+    </div>
+  </form>
+  <div class="confirmation p-2" *ngIf="finish">
+    <p class="pb-3">Are you sure you want to finish this sprint ?</p>
+    <div class="d-flex flex w-full">
+        <div class="w-50 text-right mr-1">
+            <button nbButton class="px-4" size="small" status="success" (click)="finishSprint()" >Yes</button>
+        </div>
+        <div class="w-50 text-left ml-1">
+            <button nbButton class="px-4" size="small" status="danger" (click)="close()" >No</button>
+        </div>
+    </div>
+  </div>

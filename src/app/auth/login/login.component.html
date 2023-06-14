@@ -1,0 +1,24 @@
+<div class="d-flex h-100 align-items-center justify-content-center">
+    <nb-card class="px-2">
+        <nb-card-body class="py-5">
+            <h3 class="mb-4">Welcome !</h3>
+            <form [formGroup]="myForm" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="exampleInputName" class="label">username</label>
+                    <input type="text" formControlName="username" nbInput class="mb-2" fullWidth id="exampleInputName">
+                    <span *ngIf="username && username.invalid && username.touched" class="text-danger">This field is required !</span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName" class="label">Password</label>
+                    <input type="password" formControlName="password" nbInput class="mb-2" fullWidth id="exampleInputName">
+                    <span *ngIf="password && password.invalid && password.touched" class="text-danger">This field is required !</span>
+                    <span *ngIf="invalid_credentials" class="text-danger">Invalid Credentials !</span>
+                </div>
+                <button type="submit" [disabled]="myForm.invalid" status="info" class="mt-2" fullWidth size="small" nbButton>Sign in</button>
+                <div class="text-center mt-3">
+                    <a class="text-hint" [routerLink]="['/auth/register']">Don't have an account yet? Register</a>
+                </div>
+            </form>
+        </nb-card-body>
+    </nb-card>
+</div>

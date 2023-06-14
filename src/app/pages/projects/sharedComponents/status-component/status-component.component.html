@@ -1,0 +1,7 @@
+<nb-card [ngClass]="{
+    'bg-primary': status === 'todo',
+    'inprogress': status === 'inprogress',
+    'bg-success': status === 'done'
+  }" class="status mb-0">
+    <nb-card-body class="p-0">{{status}}</nb-card-body>
+</nb-card>

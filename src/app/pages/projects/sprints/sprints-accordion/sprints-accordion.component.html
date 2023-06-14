@@ -1,0 +1,27 @@
+<nb-accordion class="mb-4">
+    <nb-accordion-item #item [expanded]="true">
+        <nb-accordion-item-header class="d-flex justify-content-between">
+            <div>
+                <nb-icon icon="list-outline" class="mr-2"></nb-icon>
+                {{sprint.name}} <span [ngClass]="sprint.status === 'inprogress' ? 'text-success' : 'text-hint'" class="ml-2">({{sprint.status}})</span>
+            </div>
+            <div *ngIf="sprint.status != 'completed' && user.isLead">
+                <nb-icon icon="edit-2-outline"
+                    (click)="openEditForm($event, false, false); $event.stopPropagation()" class="mr-3">
+                </nb-icon>
+                <button *ngIf="sprint.status == 'inprogress'" (click)="openEditForm($event, false, true); $event.stopPropagation()" nbButton size="small" status="danger" class="bg-danger px-3 mr-4 font-weight-bold">
+                    <nb-icon icon="stop-circle"></nb-icon>
+                    Finish sprint
+                </button>
+                <button *ngIf="sprint.status == 'todo'" (click)="openEditForm($event, true, false); $event.stopPropagation()" nbButton size="small"
+                    status="primary" class="px-3 mr-4 font-weight-bold">
+                    <nb-icon icon="play-circle-outline"></nb-icon>
+                    Start sprint
+                </button>
+            </div>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body class="px-2">
+                <ngx-sprint-tasks-list [sprint_id]="sprint.id" [sprintStatus]="sprint.status" [user]="user"></ngx-sprint-tasks-list>
+        </nb-accordion-item-body>
+    </nb-accordion-item>
+</nb-accordion>

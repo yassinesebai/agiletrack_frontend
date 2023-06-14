@@ -1,0 +1,11 @@
+<div class="row" *ngIf="project">
+    <div class="col-md-7 p-0 pr-2">
+        <ngx-project-header [project]="project"></ngx-project-header>
+        <ngx-contacts [team]="project.employees"></ngx-contacts>
+    </div>
+    <div class="col-md-5 px-0 pl-2">
+        <ngx-solar [total_tasks]="project.total_tasks" [done_tasks]="project.done_tasks" [chartValue]="project.progress"></ngx-solar>
+        <ngx-recent-tasks></ngx-recent-tasks>
+    </div>
+</div>
+<ngx-budget *ngIf="project" [budget]="project.budget" [cost]="project.cost"></ngx-budget>

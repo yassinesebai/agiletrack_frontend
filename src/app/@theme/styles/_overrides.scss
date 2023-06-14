@@ -1,0 +1,28 @@
+@import './themes';
+
+@mixin nb-overrides() {
+  nb-select.size-medium button {
+    nb-icon {
+      right: 0.41rem !important;
+    }
+  }
+  nb-progress-bar.size-tiny .progress-container {
+    height: 0.3rem !important;
+  }
+  nb-card {
+    font-size: 13px !important;
+  }
+  .filter-btn nb-checkbox .label {
+    cursor: pointer !important;
+  }
+  .team .user-container {
+    display:inline !important;
+  }
+  .task nb-user.size-medium .user-picture {
+    height: 28px;
+    width: 28px;
+  }
+  .team nb-select.size-medium .select-button, [nbInput].size-medium {
+    font-weight: 400;
+  }
+}

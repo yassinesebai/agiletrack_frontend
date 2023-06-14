@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <div class="d-flex">
+                    <a href="" class="text-hint">Projects</a>
+                    <div class="text-hint px-3">/</div>
+                    <a href="" class="text-hint">Project {{project_id}}</a>
+                </div>
+                <h1>Sprints</h1>
+            </div>
+            <div *ngIf="user && user.isLead">
+                <button nbButton (click)="openWindowForm()" outline status="light" class="px-4">
+                    <nb-icon icon="plus-outline" class="mr-2"></nb-icon>
+                    Create sprint
+                </button>
+            </div>
+        </div>
+        <ngx-sprints-accordion (sprintUpdated)="retrieveSprints(project_id)" *ngIf="currentSprint" [sprint]="currentSprint" [user]="user"></ngx-sprints-accordion>
+        <div *ngFor="let sprint of sprints">
+            <ngx-sprints-accordion (sprintUpdated)="retrieveSprints(project_id)" [sprint]="sprint" [user]="user"></ngx-sprints-accordion>
+        </div>
+        <h5 class="py-4">Completed sprints</h5>
+        <div *ngFor="let sprint of completed_sprints">
+            <ngx-sprints-accordion (sprintUpdated)="retrieveSprints(project_id)" [sprint]="sprint" [user]="user"></ngx-sprints-accordion>
+        </div>
+    </div>
+</div>

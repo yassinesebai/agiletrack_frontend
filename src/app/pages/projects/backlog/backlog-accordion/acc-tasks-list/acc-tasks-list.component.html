@@ -1,0 +1,21 @@
+<nb-list *ngIf="user">
+    <nb-list-item *ngFor="let task of tasks" class="contact">
+        <div class="d-flex align-items-center text-sm task" (click)="user.isLead ? openEditForm(task) : ''">
+            <img src="assets/images/story.svg" alt="">
+            <span class="text-hint mx-2">S{{task.id}}</span>
+            {{task.summary}}
+            <img class="mx-3 priority" src="assets/images/{{task.priority}}.svg" alt="">
+        </div>
+        <div class="d-flex align-items-center" *ngIf="user.isLead">
+            <nb-select placeholder="Assign to a sprint" size="small" (selectedChange)="onChange($event, task)">
+                <nb-option *ngFor="let s of sprints_list" value="{{s.id}}">{{s.name}}</nb-option>
+            </nb-select>
+        </div>
+    </nb-list-item>
+    <nb-list-item class="contact" *ngIf="user.isLead">
+        <Button (click)="openWindowForm()" class="btn btn-primary btn-sm px-4 font-weight-bold">
+            <nb-icon icon="plus-outline" class="mr-2"></nb-icon>
+            Create task
+        </Button>
+    </nb-list-item>
+</nb-list>

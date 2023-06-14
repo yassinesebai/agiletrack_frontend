@@ -1,0 +1,31 @@
+nb-list-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:first-child {
+        border-top: none;
+    }
+}
+.priority {
+    width: 18px;
+}
+
+.task {
+    cursor: pointer;
+}
+.task:hover {
+    text-decoration: underline;
+}
+.ticket nb-user, .ticket .lbl {
+    min-width: 120px;
+}
+.lbl {
+    font-size: 12px;
+    padding: 0 8px;
+}

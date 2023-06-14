@@ -1,0 +1,11 @@
+<nb-card size="giant">
+  <nb-card-header>
+      <nb-icon icon="people-outline" class="mr-2"></nb-icon>
+      Team members
+  </nb-card-header>
+    <nb-list>
+      <nb-list-item class="contact" *ngFor="let e of team">
+        <nb-user [picture]="'http://127.0.0.1:8000/' + e.image" [name]="e.username" [title]="e.job.title" size="medium"></nb-user>
+      </nb-list-item>
+    </nb-list>
+</nb-card>

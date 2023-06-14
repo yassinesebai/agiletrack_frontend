@@ -1,0 +1,60 @@
+<form [formGroup]="myForm">
+    <div class="form-group">
+      <label for="exampleInputSummary" class="label">Task summary</label>
+      <input type="text" formControlName="summary" nbInput fullWidth id="exampleInputSummary">
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label for="exampleInputDuration" class="label">Duration <span class="text-hint">(hours)</span></label>
+            <input type="number" formControlName="duration" min="0" step="1" nbInput fullWidth id="exampleInputDuration">
+        </div>
+        <div class="col-sm-4">
+            <label for="exampleInputDuration" class="label">Priority</label>
+            <nb-select fullWidth selected="3" formControlName="priority">
+                <nb-option value="high"><img class="mr-2" width="18px" src="assets/images/high.svg" alt="">High</nb-option>
+                <nb-option value="medium"><img class="mr-2" width="18px" src="assets/images/medium.svg" alt="">Medium</nb-option>
+                <nb-option value="low"><img class="mr-2" width="18px" src="assets/images/low.svg" alt="">Low</nb-option>
+            </nb-select>
+        </div>
+        <div class="col-sm-4">
+            <label for="exampleInputCost" class="label">Cost <span class="text-hint">(MAD)</span></label>
+            <input type="number" formControlName="cost" min="0" nbInput fullWidth id="exampleInputCost">
+        </div>
+    </div>
+    <div *ngIf="assigned" class="form-group row">
+        <div class="col-sm-6">
+            <label for="status" class="label">Status</label>
+            <nb-select class="status" fullWidth formControlName="status">
+                <nb-option value="todo">To Do</nb-option>
+                <nb-option value="inprogress">in progress</nb-option>
+                <nb-option value="done">Done</nb-option>
+            </nb-select>
+        </div>
+        <div class="col-sm-6">
+            <label for="employee" class="label">Assignee</label>
+            <nb-form-field>
+                <nb-icon nbPrefix icon="person-outline"></nb-icon>
+                <nb-select fullWidth size="medium" formControlName="employee">
+                    <nb-option *ngFor="let e of employeesList" value="{{e.id}}">
+                        <nb-user size="small" [name]="e.username" [picture]="'http://127.0.0.1:8000/' + e.image" title="Engineer"
+                        [showTitle]="false">
+                        </nb-user>
+                    </nb-option>
+                </nb-select>
+            </nb-form-field>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputSummary" class="label">Description</label>
+        <textarea rows="4" formControlName="description" nbInput fullWidth></textarea>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            <button type="submit" class="px-4 mr-2" size="small" nbButton status="info" (click)="mode === 'add' ? addTask() : updateTask()">
+                {{ mode == 'add' ? 'Create' : 'Update' }}
+            </button>
+            <button type="reset" (click)="close()" class="px-4 ml-2" size="small" nbButton>Cancel</button>
+        </div>
+        <button *ngIf="mode=='edit'" type="submit"(click)="deleteTask(task.id)" class="px-4" size="small" status="danger" nbButton>Delete</button>
+    </div>
+  </form>

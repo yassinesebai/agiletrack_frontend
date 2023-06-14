@@ -1,0 +1,22 @@
+<div class="header-container ml-2">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()"><b>AgileTrack</b></a>
+  </div>
+  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+  </nb-select>
+</div>
+
+<div class="header-container mr-2">
+  <nb-actions size="small">
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']" >
+      <nb-user [nbContextMenu]="userMenu"
+               [name]="user?.username"
+               [picture]="'http://127.0.0.1:8000/' + user?.image">
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>

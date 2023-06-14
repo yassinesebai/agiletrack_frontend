@@ -1,0 +1,57 @@
+<nb-card>
+  <nb-card-header>
+    <nb-icon icon="inbox-outline" class="mr-2"></nb-icon>
+    Recent tasks
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item *ngFor="let task of latest_tasks" class="contact py-4">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S{{task.id}}</span>{{task.summary}}
+      </div>
+      <ngx-status-component [status]="task.status"></ngx-status-component>
+    </nb-list-item>
+    <!-- <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S2</span>Add vertical navbar
+      </div>
+      <ngx-status-component [status]="'inprogress'"></ngx-status-component>
+    </nb-list-item>
+    <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S3</span>Login Bug fix
+      </div>
+      <ngx-status-component [status]="'done'"></ngx-status-component>
+    </nb-list-item>
+    <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S4</span>Update nebular version
+      </div>
+      <ngx-status-component [status]="'todo'"></ngx-status-component>
+    </nb-list-item>
+    <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S5</span>Notifications update
+      </div>
+      <ngx-status-component [status]="'inprogress'"></ngx-status-component>
+    </nb-list-item>
+    <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S3</span>Login Bug fix
+      </div>
+      <ngx-status-component [status]="'done'"></ngx-status-component>
+    </nb-list-item>
+    <nb-list-item class="contact">
+      <div class="d-flex align-items-center text-sm">
+        <img src="assets/images/story.svg" alt="">
+        <span class="text-hint mx-2">S2</span>Add vertical navbar
+      </div>
+      <ngx-status-component [status]="'todo'"></ngx-status-component>
+    </nb-list-item> -->
+  </nb-list>
+</nb-card>

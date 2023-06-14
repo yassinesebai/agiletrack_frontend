@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-12 mb-4 mt-5">
+        <div class="h1">
+            <nb-icon class="icc" icon="pie-chart"></nb-icon>
+            Budget overview
+        </div>
+    </div>
+    <div *ngFor="let card of cards" class="col-md-4 p-0">
+        <ngx-money-card [card]="card"></ngx-money-card>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 p-0 pr-2">
+        <ngx-pie-char-card [expenses]="cost" [remaining]="remaining"></ngx-pie-char-card>
+    </div>
+    <div class="col-lg-6 p-0 pl-2">
+        <ngx-bar-chart-card [budget]="budget" [expenses]="cost" [remaining]="remaining"></ngx-bar-chart-card>
+    </div>
+</div>

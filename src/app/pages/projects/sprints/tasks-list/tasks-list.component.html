@@ -1,0 +1,22 @@
+<div>
+    <nb-card size="small">
+        <nb-list>
+            <nb-list-item *ngFor="let t of tasks">
+                <nb-checkbox (checkedChange)="add($event, t)" status="success" class="py-3 d-flex align-items-center">
+                    <img src="assets/images/story.svg" width="" alt="">
+                    <span class="text-hint mx-2">S{{t.id}}</span>
+                    <span>{{t.summary}}</span>
+                    <img class="mx-3 priority" src="assets/images/{{t.priority}}.svg" alt="">
+                </nb-checkbox>
+            </nb-list-item>
+        </nb-list>
+    </nb-card>
+    <div class="d-flex py-2">
+        <button type="submit" (click)="assign_tasks()" class="px-4 mr-2" size="small" nbButton status="info">
+            Assign
+        </button>
+        <button type="reset" (click)="close()" class="px-4 ml-2" size="small" nbButton status="light">
+            Cancel
+        </button>
+    </div>
+</div>

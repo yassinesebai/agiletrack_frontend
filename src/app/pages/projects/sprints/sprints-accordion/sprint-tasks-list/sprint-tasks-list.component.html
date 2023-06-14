@@ -1,0 +1,30 @@
+<nb-list>
+    <nb-list-item *ngFor="let task of tasks" class="contact">
+        <div (click)="(sprintStatus !== 'completed' && user.isLead) ? openEditTaskForm(task) : null" class="d-flex align-items-center task">
+            <img src="assets/images/story.svg" alt="" />
+            <span class="text-hint mx-2">S{{task.id}}</span>
+            {{task.summary}}
+            <img class="mx-3" width="18px" [src]="'assets/images/' + task.priority + '.svg'" alt="" />
+        </div>
+        <div class="d-flex align-items-center">
+            <ngx-status-component [status]="task.status"></ngx-status-component>
+            <div class="ticket ml-3">
+                <ng-container *ngIf="task.employee">
+                    <nb-user size="small" [name]="task.employee.username" [picture]="'http://127.0.0.1:8000/' + task.employee.image" title="Engineer" [showTitle]="false"></nb-user>
+                </ng-container>
+                <ng-container *ngIf="!task.employee">
+                    <div class="lbl">Not assigned</div>
+                </ng-container>
+            </div>
+            <Button *ngIf="sprintStatus !== 'completed' && user.isLead" class="btn ml-3 p-0" (click)="dropTask(task)">
+                <nb-icon class="text-danger" icon="trash-2-outline"></nb-icon>
+            </Button>
+        </div>
+    </nb-list-item> 
+    <nb-list-item *ngIf="sprintStatus !== 'completed' && user.isLead" class="contact">
+        <button (click)="openTasks()" nbButton ghost size="small" class="px-0 font-weight-bold">
+            <nb-icon icon="plus-outline" class="mr-2"></nb-icon>
+            Add tasks
+        </button>
+    </nb-list-item>
+</nb-list>

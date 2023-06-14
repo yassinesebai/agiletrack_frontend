@@ -1,0 +1,50 @@
+<div class="d-flex h-100 align-items-center justify-content-center">
+    <nb-card class="px-2">
+        <nb-card-body class="py-5">
+            <h3 class="mb-4">Create an account !</h3>
+            <form [formGroup]="myForm" (ngSubmit)="register()">
+                <div class="form-group">
+                    <label for="username" class="label">username</label>
+                    <input class="mb-2" type="text" formControlName="username" nbInput fullWidth id="username">
+                    <span *ngIf="username && username.invalid && (isSubmitted || username.touched)" class="text-danger">This field is
+                        required !</span>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="label">Email</label>
+                    <input class="mb-2" type="email" formControlName="email" nbInput fullWidth id="email">
+                    <span *ngIf="email && email.invalid && (isSubmitted || email.touched)" class="text-danger">
+                        {{ email?.errors?.required ? 'This field is required !' : 'Please enter a valid email !' }}
+                    </span>
+                </div>
+                <div class="form-group mb-4">
+                        <nb-radio-group class="d-flex mb-2" formControlName="group">
+                            <nb-radio value="1">Team member</nb-radio>
+                            <nb-radio value="2">Team leader</nb-radio>
+                        </nb-radio-group>
+                        <span *ngIf="group && group.invalid && (isSubmitted || group.touched)" class="text-danger">This field is
+                            required !</span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label">Password</label>
+                    <input class="mb-2" type="password" formControlName="password" nbInput fullWidth id="password">
+                    <span *ngIf="password && password.invalid && (isSubmitted || password.touched)" class="text-danger">This field is
+                        required !</span>
+                </div>
+                <div class="form-group">
+                    <label for="password2" class="label">Confirm password</label>
+                    <input class="mb-2" type="password" formControlName="password2" nbInput fullWidth id="password2">
+                    <span *ngIf="password2 && password2.invalid && (isSubmitted || password2.touched)" class="text-danger">
+                        This field is required !
+                    </span>
+                    <span *ngIf="myForm.hasError('passwordMismatch')" class="text-danger">
+                        Passwords must match !
+                    </span>
+                </div>
+                <button type="submit" status="info" class="mt-2" fullWidth size="small" nbButton>Register</button>
+                <div class="text-center mt-3">
+                    <a class="text-hint" href="">Already have an account? Sign in</a>
+                </div>
+            </form>
+        </nb-card-body>
+    </nb-card>
+</div>
