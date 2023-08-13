@@ -14,7 +14,7 @@
     <h6 class="mt-3 bold">Team :</h6>
     <div class="team align-items-center d-flex">
       <nb-user *ngFor="let e of project.employees" size="small" name="{{e.first_name}}" title="Engineer" onlyPicture
-      [picture]="'http://127.0.0.1:8000/' + e.image">></nb-user>
+      [picture]="'https://agiletrack.onrender.com' + e.image">></nb-user>
       <span class="ml-auto text-hint">
         📅 {{project.estimated_end_date}}
       </span>

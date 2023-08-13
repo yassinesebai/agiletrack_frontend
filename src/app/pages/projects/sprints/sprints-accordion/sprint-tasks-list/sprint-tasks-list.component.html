@@ -10,7 +10,7 @@
             <ngx-status-component [status]="task.status"></ngx-status-component>
             <div class="ticket ml-3">
                 <ng-container *ngIf="task.employee">
-                    <nb-user size="small" [name]="task.employee.username" [picture]="'http://127.0.0.1:8000/' + task.employee.image" title="Engineer" [showTitle]="false"></nb-user>
+                    <nb-user size="small" [name]="task.employee.username" [picture]="'https://agiletrack.onrender.com' + task.employee.image" title="Engineer" [showTitle]="false"></nb-user>
                 </ng-container>
                 <ng-container *ngIf="!task.employee">
                     <div class="lbl">Not assigned</div>

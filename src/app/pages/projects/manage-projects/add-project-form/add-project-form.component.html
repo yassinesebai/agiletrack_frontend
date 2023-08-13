@@ -21,7 +21,7 @@
             <nb-icon nbPrefix icon="people-outline"></nb-icon>
             <nb-select class="team" multiple size="large" formControlName="employees">
                 <nb-option *ngFor="let e of employeesList" value="{{e.id}}">
-                    <nb-user size="small" [name]="e.username + ' '" [picture]="'http://127.0.0.1:8000/' + e.image" [title]="e.auth_groups && e.auth_groups.indexOf('lead') !== -1 ? '(Team lead)' : ''">
+                    <nb-user size="small" [name]="e.username + ' '" [picture]="'https://agiletrack.onrender.com' + e.image" [title]="e.auth_groups && e.auth_groups.indexOf('lead') !== -1 ? '(Team lead)' : ''">
                     </nb-user>
                 </nb-option>
             </nb-select>

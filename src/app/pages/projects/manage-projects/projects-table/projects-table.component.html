@@ -34,7 +34,7 @@
             <td class="team">
                 <div class="d-flex flex-wrap justify-content-start">
                     <nb-user *ngFor="let e of p.employees" size="small" [name]="e.username" title="Engineer" onlyPicture
-                    [picture]="'http://127.0.0.1:8000/' + e.image"></nb-user>
+                    [picture]="'https://agiletrack.onrender.com' + e.image"></nb-user>
                 </div>
             </td>
             <td class="action" (click)="user.isLead ? openEditWindowForm(p) : ''">

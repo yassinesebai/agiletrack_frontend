@@ -28,7 +28,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <nb-user *ngIf="item.employee" size="medium" [name]="item.employee.username" title="Engineer"
-                                            onlyPicture [picture]="'http://127.0.0.1:8000/' + item.employee.image">
+                                            onlyPicture [picture]="'https://agiletrack.onrender.com' + item.employee.image">
                                         </nb-user>
                                         <div class="text-hint" *ngIf="!item.employee">NOT ASSIGNED -</div>
                                         <div class="text-hint ml-2">TASK-{{item.id}}</div>
