@@ -82,7 +82,7 @@ export class AddTaskFormComponent implements OnInit {
   addTask() {
     let data = this.myForm.value
     data.project = this.id;
-    data.employee = null;
+    data.employee = null; 
     delete data['status']
     this.backlogService.add_task(data).subscribe({
       next: () => {

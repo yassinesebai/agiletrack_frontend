@@ -5,7 +5,7 @@
   </nb-card-header>
     <nb-list>
       <nb-list-item class="contact" *ngFor="let e of team">
-        <nb-user [picture]="'http://127.0.0.1:8000/' + e.image" [name]="e.username" [title]="e.job.title" size="medium"></nb-user>
+        <nb-user [picture]="'http://127.0.0.1:8000/' + e.image" [name]="e.username" [title]="e.job?.title" size="medium"></nb-user>
       </nb-list-item>
     </nb-list>
 </nb-card>
