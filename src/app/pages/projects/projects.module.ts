@@ -21,7 +21,6 @@ import {
   NbFormFieldModule,
   NbToastrModule,
 } from "@nebular/theme";
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ProjectCardComponent } from "./choose-project/project-card/project-card.component";
 import { ChooseProjectComponent } from "./choose-project/choose-project.component";
 import { ProjectOverviewComponent } from "./project-overview/project-overview.component";
@@ -97,7 +96,6 @@ import { ProfileComponent } from './profile/profile.component';
     ThemeModule,
     NbFormFieldModule,
     NbAccordionModule,
-    Ng2SmartTableModule,
     ReactiveFormsModule,
     NbProgressBarModule,
     NbRadioModule,
